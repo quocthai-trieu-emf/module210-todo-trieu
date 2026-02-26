@@ -19,6 +19,16 @@ jobs:
        contents: read
     steps:
       - uses: actions/checkout@v3
+
+      - name: Vérifier la présence de index.html
+        run: |
+          if [ -f "./src/frontend/index.html" ]; then
+            echo "Le fichier index.html existe"
+          else
+            echo "Erreur : index.html n’existe pas!"
+            exit 1
+          fi
+      
         with:
           submodules: true
           lfs: false
